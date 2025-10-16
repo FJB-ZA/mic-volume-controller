@@ -58,5 +58,17 @@ namespace MicVolumeController.Properties {
                 this["SelectedMicrophone"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string MicrophoneVolumes {
+            get {
+                return ((string)(this["MicrophoneVolumes"]));
+            }
+            set {
+                this["MicrophoneVolumes"] = value;
+            }
+        }
     }
 }

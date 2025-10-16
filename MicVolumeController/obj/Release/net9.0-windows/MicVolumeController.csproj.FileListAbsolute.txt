@@ -24,3 +24,5 @@ C:\Users\Francois\source\repos\MicVolumeController\MicVolumeController\obj\Relea
 C:\Users\Francois\source\repos\MicVolumeController\MicVolumeController\obj\Release\net9.0-windows\MicVolumeController.pdb
 C:\Users\Francois\source\repos\MicVolumeController\MicVolumeController\obj\Release\net9.0-windows\MicVolumeController.genruntimeconfig.cache
 C:\Users\Francois\source\repos\MicVolumeController\MicVolumeController\obj\Release\net9.0-windows\ref\MicVolumeController.dll
+C:\Users\Francois\source\repos\MicVolumeController\MicVolumeController\obj\Release\net9.0-windows\MicVolumeController.sourcelink.json
+C:\Users\Francois\source\repos\MicVolumeController\MicVolumeController\bin\Release\net9.0-windows\mic_controller_icon.ico

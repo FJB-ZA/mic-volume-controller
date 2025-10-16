@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -18,6 +19,7 @@ namespace MicVolumeController
 		private NumericUpDown numVolume;
 		private bool isUpdating = false;
 		private bool isInitializing = true;
+		private Dictionary<string, int> microphoneVolumes = new Dictionary<string, int>();
 
 		public MainForm()
 		{
@@ -36,6 +38,16 @@ namespace MicVolumeController
 			this.FormBorderStyle = FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.StartPosition = FormStartPosition.CenterScreen;
+
+			// Set the form icon (taskbar icon)
+			try
+			{
+				this.Icon = new System.Drawing.Icon("mic_controller_icon.ico");
+			}
+			catch
+			{
+				// If icon file not found, use default
+			}
 
 			// Microphone selection
 			Label lblMic = new Label();
@@ -133,17 +145,47 @@ namespace MicVolumeController
 			// Don't auto-select - let LoadSettings handle it
 		}
 
+		private void LoadMicrophoneVolumes()
+		{
+			// Load saved volumes from settings
+			string savedVolumes = Properties.Settings.Default.MicrophoneVolumes;
+			microphoneVolumes.Clear();
+
+			if (!string.IsNullOrEmpty(savedVolumes))
+			{
+				// Format: "MicName1=Volume1;MicName2=Volume2"
+				var pairs = savedVolumes.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+				foreach (var pair in pairs)
+				{
+					var parts = pair.Split('=');
+					if (parts.Length == 2 && int.TryParse(parts[1], out int volume))
+					{
+						microphoneVolumes[parts[0]] = volume;
+					}
+				}
+			}
+		}
+
+		private void SaveMicrophoneVolumes()
+		{
+			// Save volumes to settings
+			// Format: "MicName1=Volume1;MicName2=Volume2"
+			var volumeStrings = microphoneVolumes.Select(kvp => $"{kvp.Key}={kvp.Value}");
+			Properties.Settings.Default.MicrophoneVolumes = string.Join(";", volumeStrings);
+		}
+
+		private int GetVolumeForMicrophone(string micName)
+		{
+			// Return saved volume for this mic, or default to 50
+			return microphoneVolumes.ContainsKey(micName) ? microphoneVolumes[micName] : 50;
+		}
+
 		private void LoadSettings()
 		{
 			try
 			{
-				// Load volume setting
-				int savedVolume = Properties.Settings.Default.VolumeLevel;
-				if (savedVolume >= 0 && savedVolume <= 100)
-				{
-					trackVolume.Value = savedVolume;
-					numVolume.Value = savedVolume;
-				}
+				// Load microphone volumes
+				LoadMicrophoneVolumes();
 
 				// Load close to tray setting
 				CheckBox chkCloseToTray = (CheckBox)this.Controls["chkCloseToTray"];
@@ -189,7 +231,13 @@ namespace MicVolumeController
 		{
 			try
 			{
-				Properties.Settings.Default.VolumeLevel = (int)numVolume.Value;
+				// Save current microphone's volume
+				if (selectedDevice != null)
+				{
+					microphoneVolumes[selectedDevice.FriendlyName] = (int)numVolume.Value;
+				}
+
+				SaveMicrophoneVolumes();
 				Properties.Settings.Default.CloseToTray = closeToTray;
 
 				ComboBox cmb = (ComboBox)this.Controls["cmbMicrophones"];
@@ -215,8 +263,16 @@ namespace MicVolumeController
 				var item = (MicrophoneItem)cmb.SelectedItem;
 				selectedDevice = item.Device;
 
-				// Set initial volume
-				SetMicrophoneVolume((int)numVolume.Value);
+				// Load saved volume for this specific microphone
+				int savedVolume = GetVolumeForMicrophone(item.Name);
+
+				isUpdating = true;
+				trackVolume.Value = savedVolume;
+				numVolume.Value = savedVolume;
+				isUpdating = false;
+
+				// Set the volume
+				SetMicrophoneVolume(savedVolume);
 
 				// Start monitoring
 				volumeTimer.Start();
@@ -294,7 +350,18 @@ namespace MicVolumeController
 		{
 			trayIcon = new NotifyIcon();
 			trayIcon.Text = "Mic Volume Controller";
-			trayIcon.Icon = System.Drawing.SystemIcons.Application;
+
+			// Use the custom icon for tray
+			try
+			{
+				trayIcon.Icon = new System.Drawing.Icon("mic_controller_icon.ico");
+			}
+			catch
+			{
+				// If icon file not found, use default
+				trayIcon.Icon = System.Drawing.SystemIcons.Application;
+			}
+
 			trayIcon.Visible = false;
 
 			// Create context menu for tray icon

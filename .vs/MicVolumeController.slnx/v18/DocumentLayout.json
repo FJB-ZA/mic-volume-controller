@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Francois\\source\\repos\\MicVolumeController\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0B780365-23E0-4F2C-A9FA-0CFD5AD921B2}|MicVolumeController\\MicVolumeController.csproj|c:\\users\\francois\\source\\repos\\micvolumecontroller\\micvolumecontroller\\micvolumecontroller.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{0B780365-23E0-4F2C-A9FA-0CFD5AD921B2}|MicVolumeController\\MicVolumeController.csproj|solutionrelative:micvolumecontroller\\micvolumecontroller.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{C17A8ACA-A2FC-38C6-27C7-849E3B1AB838}|MicVolumeController\\MicVolumeController.csproj|c:\\users\\francois\\source\\repos\\micvolumecontroller\\micvolumecontroller\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C17A8ACA-A2FC-38C6-27C7-849E3B1AB838}|MicVolumeController\\MicVolumeController.csproj|solutionrelative:micvolumecontroller\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0B780365-23E0-4F2C-A9FA-0CFD5AD921B2}|MicVolumeController\\MicVolumeController.csproj|c:\\users\\francois\\source\\repos\\micvolumecontroller\\micvolumecontroller\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0B780365-23E0-4F2C-A9FA-0CFD5AD921B2}|MicVolumeController\\MicVolumeController.csproj|solutionrelative:micvolumecontroller\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C17A8ACA-A2FC-38C6-27C7-849E3B1AB838}|MicVolumeController\\MicVolumeController.csproj|c:\\users\\francois\\source\\repos\\micvolumecontroller\\micvolumecontroller\\micvolumecontroller.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{C17A8ACA-A2FC-38C6-27C7-849E3B1AB838}|MicVolumeController\\MicVolumeController.csproj|solutionrelative:micvolumecontroller\\micvolumecontroller.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0B780365-23E0-4F2C-A9FA-0CFD5AD921B2}|MicVolumeController\\MicVolumeController.csproj|c:\\users\\francois\\source\\repos\\micvolumecontroller\\micvolumecontroller\\micvolumecontroller.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{0B780365-23E0-4F2C-A9FA-0CFD5AD921B2}|MicVolumeController\\MicVolumeController.csproj|solutionrelative:micvolumecontroller\\micvolumecontroller.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+      "AbsoluteMoniker": "D:0:0:{C17A8ACA-A2FC-38C6-27C7-849E3B1AB838}|MicVolumeController\\MicVolumeController.csproj|c:\\users\\francois\\source\\repos\\micvolumecontroller\\micvolumecontroller\\properties\\settings.settings||{6D2695F9-5365-4A78-89ED-F205C045BFE6}",
+      "RelativeMoniker": "D:0:0:{C17A8ACA-A2FC-38C6-27C7-849E3B1AB838}|MicVolumeController\\MicVolumeController.csproj|solutionrelative:micvolumecontroller\\properties\\settings.settings||{6D2695F9-5365-4A78-89ED-F205C045BFE6}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,24 +22,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MicVolumeController",
-              "DocumentMoniker": "C:\\Users\\Francois\\source\\repos\\MicVolumeController\\MicVolumeController\\MicVolumeController.csproj",
-              "RelativeDocumentMoniker": "MicVolumeController\\MicVolumeController.csproj",
-              "ToolTip": "C:\\Users\\Francois\\source\\repos\\MicVolumeController\\MicVolumeController\\MicVolumeController.csproj",
-              "RelativeToolTip": "MicVolumeController\\MicVolumeController.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-10-16T09:37:13.515Z",
+              "DocumentIndex": 2,
+              "Title": "Settings.settings",
+              "DocumentMoniker": "C:\\Users\\Francois\\source\\repos\\MicVolumeController\\MicVolumeController\\Properties\\Settings.settings",
+              "RelativeDocumentMoniker": "MicVolumeController\\Properties\\Settings.settings",
+              "ToolTip": "C:\\Users\\Francois\\source\\repos\\MicVolumeController\\MicVolumeController\\Properties\\Settings.settings",
+              "RelativeToolTip": "MicVolumeController\\Properties\\Settings.settings",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002767|",
+              "WhenOpened": "2025-10-16T13:25:24.178Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "MicVolumeController",
               "DocumentMoniker": "C:\\Users\\Francois\\source\\repos\\MicVolumeController\\MicVolumeController\\MicVolumeController.csproj",
               "RelativeDocumentMoniker": "MicVolumeController\\MicVolumeController.csproj",
@@ -51,13 +50,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "MainForm.cs",
               "DocumentMoniker": "C:\\Users\\Francois\\source\\repos\\MicVolumeController\\MicVolumeController\\MainForm.cs",
               "RelativeDocumentMoniker": "MicVolumeController\\MainForm.cs",
               "ToolTip": "C:\\Users\\Francois\\source\\repos\\MicVolumeController\\MicVolumeController\\MainForm.cs",
               "RelativeToolTip": "MicVolumeController\\MainForm.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAUwCIAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAACgAAAAAAAAAAAAAADIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-16T09:05:34.755Z",
               "EditorCaption": ""

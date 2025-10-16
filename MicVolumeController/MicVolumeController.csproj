@@ -13,7 +13,9 @@
 		<Version>1.0.0</Version>
 	</PropertyGroup>
 	<ItemGroup>
-		<Content Include="mic_controller_icon.ico" />
+		<Content Include="mic_controller_icon.ico">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="NAudio" Version="2.2.1" />
