@@ -1,0 +1,3 @@
+C:\Temp\MicApp\MicVolumeController.pdb
+C:\Temp\MicApp\MicVolumeController.dll.config
+C:\Temp\MicApp\MicVolumeController.exe

@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Francois\\source\\repos\\MicVolumeController\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0B780365-23E0-4F2C-A9FA-0CFD5AD921B2}|MicVolumeController\\MicVolumeController.csproj|c:\\users\\francois\\source\\repos\\micvolumecontroller\\micvolumecontroller\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B780365-23E0-4F2C-A9FA-0CFD5AD921B2}|MicVolumeController\\MicVolumeController.csproj|solutionrelative:micvolumecontroller\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainForm.cs",
+              "DocumentMoniker": "C:\\Users\\Francois\\source\\repos\\MicVolumeController\\MicVolumeController\\MainForm.cs",
+              "RelativeDocumentMoniker": "MicVolumeController\\MainForm.cs",
+              "ToolTip": "C:\\Users\\Francois\\source\\repos\\MicVolumeController\\MicVolumeController\\MainForm.cs",
+              "RelativeToolTip": "MicVolumeController\\MainForm.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAUwDAAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T09:05:34.755Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
