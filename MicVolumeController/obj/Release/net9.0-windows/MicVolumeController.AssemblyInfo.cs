@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Control and lock microphone volume levels on Windows")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fe52152b866f6a27934d4f3f5b1e8360bde3d96a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4558eb5c6883f1b9f4e125733ce51a2dcfda8f17")]
 [assembly: System.Reflection.AssemblyProductAttribute("Mic Volume Controller")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MicVolumeController")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

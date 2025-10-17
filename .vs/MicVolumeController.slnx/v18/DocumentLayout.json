@@ -11,7 +11,7 @@
       "RelativeMoniker": "D:0:0:{C17A8ACA-A2FC-38C6-27C7-849E3B1AB838}|MicVolumeController\\MicVolumeController.csproj|solutionrelative:micvolumecontroller\\micvolumecontroller.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C17A8ACA-A2FC-38C6-27C7-849E3B1AB838}|MicVolumeController\\MicVolumeController.csproj|c:\\users\\francois\\source\\repos\\micvolumecontroller\\micvolumecontroller\\properties\\settings.settings||{6D2695F9-5365-4A78-89ED-F205C045BFE6}",
+      "AbsoluteMoniker": "D:0:0:{C17A8ACA-A2FC-38C6-27C7-849E3B1AB838}|MicVolumeController\\MicVolumeController.csproj|C:\\Users\\Francois\\source\\repos\\MicVolumeController\\micvolumecontroller\\properties\\settings.settings||{6D2695F9-5365-4A78-89ED-F205C045BFE6}",
       "RelativeMoniker": "D:0:0:{C17A8ACA-A2FC-38C6-27C7-849E3B1AB838}|MicVolumeController\\MicVolumeController.csproj|solutionrelative:micvolumecontroller\\properties\\settings.settings||{6D2695F9-5365-4A78-89ED-F205C045BFE6}"
     }
   ],
@@ -33,8 +33,7 @@
               "ToolTip": "C:\\Users\\Francois\\source\\repos\\MicVolumeController\\MicVolumeController\\Properties\\Settings.settings",
               "RelativeToolTip": "MicVolumeController\\Properties\\Settings.settings",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002767|",
-              "WhenOpened": "2025-10-16T13:25:24.178Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-16T13:25:24.178Z"
             },
             {
               "$type": "Document",
@@ -45,8 +44,7 @@
               "ToolTip": "C:\\Users\\Francois\\source\\repos\\MicVolumeController\\MicVolumeController\\MicVolumeController.csproj",
               "RelativeToolTip": "MicVolumeController\\MicVolumeController.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-10-16T09:35:15.131Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-16T09:35:15.131Z"
             },
             {
               "$type": "Document",
@@ -56,7 +54,7 @@
               "RelativeDocumentMoniker": "MicVolumeController\\MainForm.cs",
               "ToolTip": "C:\\Users\\Francois\\source\\repos\\MicVolumeController\\MicVolumeController\\MainForm.cs",
               "RelativeToolTip": "MicVolumeController\\MainForm.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAAADIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAIACAAAAAAAAAAAxwJACAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-16T09:05:34.755Z",
               "EditorCaption": ""

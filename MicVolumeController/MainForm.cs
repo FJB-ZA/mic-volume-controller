@@ -8,19 +8,69 @@ using NAudio.CoreAudioApi;
 
 namespace MicVolumeController
 {
+	/// <summary>
+	/// Main form for the Microphone Volume Controller application.
+	/// Allows users to select a microphone and lock its volume to a specific level.
+	/// The volume is continuously enforced to prevent other applications from changing it.
+	/// </summary>
 	public partial class MainForm : Form
 	{
+		/// <summary>
+		/// Enumerator for discovering audio devices on the system.
+		/// </summary>
 		private MMDeviceEnumerator deviceEnumerator;
+
+		/// <summary>
+		/// The currently selected microphone device.
+		/// </summary>
 		private MMDevice selectedDevice;
+
+		/// <summary>
+		/// Timer that continuously enforces the volume setting every 500ms.
+		/// </summary>
 		private System.Windows.Forms.Timer volumeTimer;
+
+		/// <summary>
+		/// System tray icon for the application.
+		/// </summary>
 		private NotifyIcon trayIcon;
+
+		/// <summary>
+		/// Flag indicating whether the app should minimize to tray when closed.
+		/// </summary>
 		private bool closeToTray = true;
+
+		/// <summary>
+		/// TrackBar control for adjusting volume with a slider.
+		/// </summary>
 		private TrackBar trackVolume;
+
+		/// <summary>
+		/// NumericUpDown control for precise volume input.
+		/// </summary>
 		private NumericUpDown numVolume;
+
+		/// <summary>
+		/// Flag to prevent infinite loops when synchronizing volume controls.
+		/// </summary>
 		private bool isUpdating = false;
+
+		/// <summary>
+		/// Flag indicating whether the form is still initializing.
+		/// Prevents settings from being saved during initial load.
+		/// </summary>
 		private bool isInitializing = true;
+
+		/// <summary>
+		/// Dictionary storing volume levels for each microphone.
+		/// Key: Microphone friendly name, Value: Volume level (0-100).
+		/// </summary>
 		private Dictionary<string, int> microphoneVolumes = new Dictionary<string, int>();
 
+		/// <summary>
+		/// Initializes a new instance of the MainForm class.
+		/// Sets up the UI, loads settings, and initializes audio devices.
+		/// </summary>
 		public MainForm()
 		{
 			InitializeComponent();
@@ -31,6 +81,10 @@ namespace MicVolumeController
 			isInitializing = false;
 		}
 
+		/// <summary>
+		/// Initializes all UI components and controls.
+		/// Creates the form layout, controls, and event handlers.
+		/// </summary>
 		private void InitializeComponent()
 		{
 			this.Text = "Mic Volume Controller";
@@ -124,12 +178,18 @@ namespace MicVolumeController
 			this.FormClosing += MainForm_FormClosing;
 		}
 
+		/// <summary>
+		/// Initializes the audio subsystem and loads available microphones.
+		/// </summary>
 		private void InitializeAudio()
 		{
 			deviceEnumerator = new MMDeviceEnumerator();
 			LoadMicrophones();
 		}
 
+		/// <summary>
+		/// Loads all active capture (microphone) devices into the dropdown list.
+		/// </summary>
 		private void LoadMicrophones()
 		{
 			ComboBox cmb = (ComboBox)this.Controls["cmbMicrophones"];
@@ -145,6 +205,10 @@ namespace MicVolumeController
 			// Don't auto-select - let LoadSettings handle it
 		}
 
+		/// <summary>
+		/// Loads saved volume levels for all microphones from application settings.
+		/// Volumes are stored as a semicolon-separated string in format "MicName1=Volume1;MicName2=Volume2".
+		/// </summary>
 		private void LoadMicrophoneVolumes()
 		{
 			// Load saved volumes from settings
@@ -166,6 +230,10 @@ namespace MicVolumeController
 			}
 		}
 
+		/// <summary>
+		/// Saves all microphone volume levels to application settings.
+		/// Volumes are stored as a semicolon-separated string in format "MicName1=Volume1;MicName2=Volume2".
+		/// </summary>
 		private void SaveMicrophoneVolumes()
 		{
 			// Save volumes to settings
@@ -174,12 +242,21 @@ namespace MicVolumeController
 			Properties.Settings.Default.MicrophoneVolumes = string.Join(";", volumeStrings);
 		}
 
+		/// <summary>
+		/// Gets the saved volume level for a specific microphone.
+		/// </summary>
+		/// <param name="micName">The friendly name of the microphone.</param>
+		/// <returns>The saved volume level (0-100), or 50 if no saved value exists.</returns>
 		private int GetVolumeForMicrophone(string micName)
 		{
 			// Return saved volume for this mic, or default to 50
 			return microphoneVolumes.ContainsKey(micName) ? microphoneVolumes[micName] : 50;
 		}
 
+		/// <summary>
+		/// Loads all saved application settings including microphone volumes,
+		/// selected microphone, and user preferences.
+		/// </summary>
 		private void LoadSettings()
 		{
 			try
@@ -227,6 +304,10 @@ namespace MicVolumeController
 			}
 		}
 
+		/// <summary>
+		/// Saves all current application settings including the current microphone's volume,
+		/// selected microphone, and user preferences.
+		/// </summary>
 		private void SaveSettings()
 		{
 			try
@@ -255,6 +336,12 @@ namespace MicVolumeController
 			}
 		}
 
+		/// <summary>
+		/// Handles the microphone selection change event.
+		/// Loads the saved volume for the selected microphone and starts volume monitoring.
+		/// </summary>
+		/// <param name="sender">The ComboBox that triggered the event.</param>
+		/// <param name="e">Event arguments.</param>
 		private void CmbMicrophones_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			ComboBox cmb = (ComboBox)sender;
@@ -285,6 +372,12 @@ namespace MicVolumeController
 			}
 		}
 
+		/// <summary>
+		/// Handles the TrackBar value change event.
+		/// Updates the numeric input and applies the volume to the microphone.
+		/// </summary>
+		/// <param name="sender">The TrackBar that triggered the event.</param>
+		/// <param name="e">Event arguments.</param>
 		private void TrackVolume_ValueChanged(object sender, EventArgs e)
 		{
 			if (isUpdating) return;
@@ -301,6 +394,12 @@ namespace MicVolumeController
 			}
 		}
 
+		/// <summary>
+		/// Handles the NumericUpDown value change event.
+		/// Updates the trackbar and applies the volume to the microphone.
+		/// </summary>
+		/// <param name="sender">The NumericUpDown that triggered the event.</param>
+		/// <param name="e">Event arguments.</param>
 		private void NumVolume_ValueChanged(object sender, EventArgs e)
 		{
 			if (isUpdating) return;
@@ -317,12 +416,23 @@ namespace MicVolumeController
 			}
 		}
 
+		/// <summary>
+		/// Timer tick event that continuously enforces the volume setting.
+		/// This prevents other applications from changing the microphone volume.
+		/// Runs every 500ms.
+		/// </summary>
+		/// <param name="sender">The Timer that triggered the event.</param>
+		/// <param name="e">Event arguments.</param>
 		private void VolumeTimer_Tick(object sender, EventArgs e)
 		{
 			// Continuously enforce the volume setting
 			SetMicrophoneVolume((int)numVolume.Value);
 		}
 
+		/// <summary>
+		/// Sets the volume of the selected microphone to the specified level.
+		/// </summary>
+		/// <param name="volumeLevel">The volume level to set (0-100).</param>
 		private void SetMicrophoneVolume(int volumeLevel)
 		{
 			if (selectedDevice != null)
@@ -340,12 +450,18 @@ namespace MicVolumeController
 			}
 		}
 
+		/// <summary>
+		/// Checks if the application is set to start with Windows and updates the checkbox.
+		/// </summary>
 		private void SetupStartupOption()
 		{
 			CheckBox chk = (CheckBox)this.Controls["chkStartup"];
 			chk.Checked = IsInStartup();
 		}
 
+		/// <summary>
+		/// Initializes the system tray icon and its context menu.
+		/// </summary>
 		private void SetupTrayIcon()
 		{
 			trayIcon = new NotifyIcon();
@@ -381,6 +497,12 @@ namespace MicVolumeController
 			trayIcon.DoubleClick += (s, e) => ShowFromTray();
 		}
 
+		/// <summary>
+		/// Handles the form closing event.
+		/// If "Close to tray" is enabled, minimizes the app to the system tray instead of closing.
+		/// </summary>
+		/// <param name="sender">The form that triggered the event.</param>
+		/// <param name="e">Event arguments that can be used to cancel the close operation.</param>
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			CheckBox chk = (CheckBox)this.Controls["chkCloseToTray"];
@@ -395,6 +517,9 @@ namespace MicVolumeController
 			}
 		}
 
+		/// <summary>
+		/// Restores the application window from the system tray.
+		/// </summary>
 		private void ShowFromTray()
 		{
 			this.Show();
@@ -403,6 +528,9 @@ namespace MicVolumeController
 			trayIcon.Visible = false;
 		}
 
+		/// <summary>
+		/// Exits the application completely, closing all resources.
+		/// </summary>
 		private void ExitApplication()
 		{
 			closeToTray = false;
@@ -410,6 +538,11 @@ namespace MicVolumeController
 			Application.Exit();
 		}
 
+		/// <summary>
+		/// Handles the "Close to tray" checkbox change event.
+		/// </summary>
+		/// <param name="sender">The checkbox that triggered the event.</param>
+		/// <param name="e">Event arguments.</param>
 		private void ChkCloseToTray_CheckedChanged(object sender, EventArgs e)
 		{
 			CheckBox chk = (CheckBox)sender;
@@ -422,12 +555,21 @@ namespace MicVolumeController
 			}
 		}
 
+		/// <summary>
+		/// Handles the "Start with Windows" checkbox change event.
+		/// </summary>
+		/// <param name="sender">The checkbox that triggered the event.</param>
+		/// <param name="e">Event arguments.</param>
 		private void ChkStartup_CheckedChanged(object sender, EventArgs e)
 		{
 			CheckBox chk = (CheckBox)sender;
 			SetStartup(chk.Checked);
 		}
 
+		/// <summary>
+		/// Checks if the application is registered to start with Windows.
+		/// </summary>
+		/// <returns>True if the application is set to start with Windows, false otherwise.</returns>
 		private bool IsInStartup()
 		{
 			try
@@ -441,6 +583,11 @@ namespace MicVolumeController
 			}
 		}
 
+		/// <summary>
+		/// Enables or disables the application to start with Windows.
+		/// Modifies the Windows Registry to add or remove the startup entry.
+		/// </summary>
+		/// <param name="enable">True to enable startup with Windows, false to disable.</param>
 		private void SetStartup(bool enable)
 		{
 			try
@@ -463,6 +610,11 @@ namespace MicVolumeController
 			}
 		}
 
+		/// <summary>
+		/// Disposes of resources used by the form.
+		/// Stops the timer and disposes of audio resources.
+		/// </summary>
+		/// <param name="disposing">True if disposing managed resources.</param>
 		protected override void Dispose(bool disposing)
 		{
 			if (disposing)
@@ -477,11 +629,26 @@ namespace MicVolumeController
 		}
 	}
 
+	/// <summary>
+	/// Represents a microphone device in the dropdown list.
+	/// Wraps an NAudio MMDevice with a user-friendly display name.
+	/// </summary>
 	public class MicrophoneItem
 	{
+		/// <summary>
+		/// Gets or sets the underlying audio device.
+		/// </summary>
 		public MMDevice Device { get; set; }
+
+		/// <summary>
+		/// Gets or sets the friendly name of the microphone.
+		/// </summary>
 		public string Name { get; set; }
 
+		/// <summary>
+		/// Returns the friendly name of the microphone for display in the UI.
+		/// </summary>
+		/// <returns>The friendly name of the microphone.</returns>
 		public override string ToString()
 		{
 			return Name;
